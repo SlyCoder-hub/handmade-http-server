@@ -1,11 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>登录页面</title>
+    <style>
+        body {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            height: 100vh;
+        }
+
+        .box {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid coral;
+            height: 200px;
+            width: 300px;
+
+
+        }
+
+        .but {
+            background-color: coral;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 30px;
+            display: block;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>我是index</h1>
+    <div class="box">
+
+        <h2 style="text-align: center;">登录页面</h2>
+        <label for="username" style="font-family: kaiti;font-size: 20px;">用户名：</label>
+        <input type="text" id="username" placeholder="请输入用户名">
+        <br>
+        <label for="password" style="font-family: kaiti;font-size: 20px;">密码：</label>
+        <input type="text" id="password" placeholder="请输入密码">
+        <br>
+        <div style=" display: flex;
+            justify-content: center;
+            align-items: center;">
+            <button onclick="login()" class="but">登录</button>
+        </div>
+        <div id="position"> </div>
+
+
+    </div>
+    <script>
+        async function login() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            const pos = document.getElementById('position');
+            const client_data = 'username=' + user + "&pssword=" + pass;
+            if (!user || !pass) {
+                alert("请填完整信息哦！");
+                return;
+            }
+            try {
+                const response = await fetch('http://127.0.0.1:9877', {
+                    method: 'POST',
+                    body: client_data
+                });
+                const result = await response.text();
+                position.innerText = "服务器返回" + result;
+            }
+            catch (error) {
+                position.innerText = "连接不到服务器,记得运行服务器!";
+            }
+        }
+
+
+
+    </script>
 </body>
+
 </html>
