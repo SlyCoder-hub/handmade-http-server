@@ -29,7 +29,7 @@
 - [x] **粘包处理**：封装了 `readline` 和 `writen` 函数，确保 TCP 字节流读取的完整性。
 - [x] **信号处理**：通过 `SIGCHLD` 信号配合 `waitpid` 自动回收子进程，彻底杜绝僵尸进程。
 - [x] **协议解析**：手动解析 HTTP 请求头，识别 `Content-Length` 并精准读取 Body 数据。
-- [x] **跨域支持**：在响应头中手动添加 `Access-Control-Allow-Origin: *`，解决浏览器跨域限制。
+- [x] **跨域支持**：在响应头中手动添加 `Access-Control-Allow-Origin: *`，解决浏览器的跨域限制。
 
 ### 前端实现 (HTML & JS)
 - [x] **异步交互**：使用现代 JavaScript 的 `fetch` 接口与后端进行非阻塞通信。
